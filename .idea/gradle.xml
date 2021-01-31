@@ -5,11 +5,11 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/../sandbox" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox" />
         <option name="gradleHome" value="$PROJECT_DIR$/../Program Files/gradle/gradle-6.8.1" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/../sandbox" />
+            <option value="$PROJECT_DIR$/sandbox" />
           </set>
         </option>
       </GradleProjectSettings>
