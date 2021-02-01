@@ -8,7 +8,7 @@ public class Main {
         hello("user");
         hello("Kirill");
 
-        Squere s = new Squere(5);
+        Square s = new Square(5);
         System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area());
 
         Rectangle r = new Rectangle(4, 6);
@@ -30,7 +30,6 @@ public class Main {
 
     public static void distance(Point p1, Point p2) {
         double distance = Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p2.x), 2));
-        System.out.printf("Расстояние между точками: " + "%.2f", distance);
-        System.out.println();
+        System.out.printf("Расстояние между точками: " + "%.2f" + "\n", distance);
     }
 }
