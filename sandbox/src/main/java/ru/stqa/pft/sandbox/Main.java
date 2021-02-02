@@ -21,7 +21,7 @@ public class Main {
         distance(p1, p2);
 
         //Расчёт через метод класса Point
-        System.out.printf("Расстояние между точками: " + "%.2f", p1.distance(p1, p2));
+        System.out.printf("Расстояние между точками: " + "%.2f", p1.distance(p2));
     }
 
     public static void hello(String somebody) {
@@ -29,7 +29,7 @@ public class Main {
     }
 
     public static void distance(Point p1, Point p2) {
-        double distance = Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p2.x), 2));
+        double distance = Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2));
         System.out.printf("Расстояние между точками: " + "%.2f" + "\n", distance);
     }
 }
