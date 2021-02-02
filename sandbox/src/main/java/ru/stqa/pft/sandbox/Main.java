@@ -21,7 +21,7 @@ public class Main {
         distance(p1, p2);
 
         //Расчёт через метод класса Point
-        System.out.printf("Расстояние между точками: " + "%.2f", Point.distance(p1, p2));
+        System.out.printf("Расстояние между точками: " + "%.2f", p1.distance(p1, p2));
     }
 
     public static void hello(String somebody) {
