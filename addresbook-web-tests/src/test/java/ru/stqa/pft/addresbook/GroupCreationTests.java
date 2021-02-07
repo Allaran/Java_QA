@@ -35,7 +35,6 @@ public class GroupCreationTests {
         fillGroupForm(new GroupData("test1", "test1", "test2"));
         submitGroupCreation();
         returnToGroupPage();
-        //wd.findElement(By.linkText("Logout")).click();
     }
 
     private void returnToGroupPage() {
