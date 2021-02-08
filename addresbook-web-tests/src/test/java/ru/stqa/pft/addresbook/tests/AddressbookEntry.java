@@ -1,4 +1,4 @@
-package ru.stqa.pft.addresbook;
+package ru.stqa.pft.addresbook.tests;
 
 public class AddressbookEntry {
     private final String firstName;
