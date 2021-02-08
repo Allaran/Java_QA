@@ -1,7 +1,6 @@
 package ru.stqa.pft.addresbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -15,15 +14,6 @@ public class ApplicationManager {
 
     public void submitGroupCreation() {
         wd.findElement(By.name("submit")).click();
-    }
-
-    public boolean isAlertPresent() {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
     }
 
     public void init() {
