@@ -1,6 +1,6 @@
-package ru.stqa.pft.addresbook.tests;
+package ru.stqa.pft.addresbook.model;
 
-public class AddressbookEntry {
+public class ContactData {
     private final String firstName;
     private final String lastName;
     private final String nickName;
@@ -10,7 +10,7 @@ public class AddressbookEntry {
     private final String email;
     private final String secondaryAddress;
 
-    public AddressbookEntry(String firstName, String lastName, String nickName, String title, String address, String phone, String email, String secondaryAddress) {
+    public ContactData(String firstName, String lastName, String nickName, String title, String address, String phone, String email, String secondaryAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nickName = nickName;
