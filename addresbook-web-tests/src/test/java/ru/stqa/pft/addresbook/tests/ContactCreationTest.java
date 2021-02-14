@@ -8,7 +8,7 @@ import ru.stqa.pft.addresbook.model.ContactData;
 public class ContactCreationTest extends TestBase {
 
     @Test
-    public void testContactCreation() throws Exception {
+    public void testContactCreation() {
         app.getNavigationHelper().gotoAddNewPage();
         app.getContactHelper().fillContactForm(new ContactData(
                 "Kirill",
