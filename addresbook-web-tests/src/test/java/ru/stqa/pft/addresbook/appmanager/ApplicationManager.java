@@ -22,8 +22,6 @@ public class ApplicationManager {
         this.browser = browser;
     }
 
-
-
     public void init() {
         if (browser.equals(BrowserType.FIREFOX)) {
             System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver-v0.29.0-win64\\geckodriver.exe");
@@ -35,20 +33,17 @@ public class ApplicationManager {
             System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer_Win32_3.150.1\\chromedriver.exe");
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts(). implicitlyWait(30, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
+        contactHelper = new ContactHelper(wd);
         sessionHelper.login("admin", "secret");
     }
 
     public void stop() {
         wd.quit();
-    }
-
-    public void submitGroupCreation() {
-        wd.findElement(By.name("submit")).click();
     }
 
     public GroupHelper getGroupHelper() {

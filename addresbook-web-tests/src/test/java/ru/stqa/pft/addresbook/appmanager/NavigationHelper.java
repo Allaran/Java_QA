@@ -10,14 +10,25 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void gotoGroupPage() {
+        if (isElementPresent(By.name("new"))
+                && isElementPresent(By.name("delete"))
+                && isElementPresent(By.name("edit"))){
+            return;
+        }
         click(By.linkText("groups"));
     }
 
     public void gotoAddNewPage() {
+        if (isElementPresent(By.tagName("h1")) && isElementPresent(By.name("submit"))) {
+            return;
+        }
         click(By.linkText("add new"));
     }
 
     public void gotoHomePage() {
-        click(By.linkText("home page"));
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
+        click(By.linkText("home"));
     }
 }

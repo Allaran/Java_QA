@@ -11,7 +11,7 @@ public class GroupCreationTests extends TestBase {
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().initGroupCreation();
         app.getGroupHelper().fillGroupForm(new GroupData("test1", "test1", "test2"));
-        app.submitGroupCreation();
+        app.getGroupHelper().submitGroupCreation();
         app.getGroupHelper().returnToGroupPage();
     }
 }
