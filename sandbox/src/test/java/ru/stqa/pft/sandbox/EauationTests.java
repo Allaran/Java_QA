@@ -1,6 +1,6 @@
 package ru.stqa.pft.sandbox;
 
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class EauationTests {
 
