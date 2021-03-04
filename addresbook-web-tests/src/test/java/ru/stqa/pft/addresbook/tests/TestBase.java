@@ -7,6 +7,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addresbook.appmanager.ApplicationManager;
+import ru.stqa.pft.addresbook.model.GroupData;
 
 public class TestBase {
 
