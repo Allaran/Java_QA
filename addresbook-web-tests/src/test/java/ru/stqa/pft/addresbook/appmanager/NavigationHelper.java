@@ -2,6 +2,7 @@ package ru.stqa.pft.addresbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class NavigationHelper extends HelperBase {
 
@@ -18,14 +19,14 @@ public class NavigationHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
-    public void gotoAddNewPage() {
+    public void addNewPage() {
         if (isElementPresent(By.tagName("h1")) && isElementPresent(By.name("submit"))) {
             return;
         }
         click(By.linkText("add new"));
     }
 
-    public void gotoHomePage() {
+    public void homePage() {
         if (isElementPresent(By.id("maintable"))) {
             return;
         }

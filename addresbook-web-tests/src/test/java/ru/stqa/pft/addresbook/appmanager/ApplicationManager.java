@@ -1,6 +1,5 @@
 package ru.stqa.pft.addresbook.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -54,11 +53,11 @@ public class ApplicationManager {
         return navigationHelper;
     }
 
-    public SessionHelper getSessionHelper() {
+    public SessionHelper session() {
         return sessionHelper;
     }
 
-    public ContactHelper getContactHelper() {
+    public ContactHelper contact() {
         return contactHelper;
     }
 }

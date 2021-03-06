@@ -7,7 +7,6 @@ import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addresbook.appmanager.ApplicationManager;
-import ru.stqa.pft.addresbook.model.GroupData;
 
 public class TestBase {
 
@@ -15,7 +14,7 @@ public class TestBase {
     FirefoxDriver wd;
 
     @BeforeSuite(alwaysRun = true)
-    public void setUp() throws Exception {
+    public void setUp() {
         app.init();
     }
 
@@ -28,7 +27,7 @@ public class TestBase {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void tearDown() {
         app.stop();
     }
 
