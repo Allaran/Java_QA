@@ -2,11 +2,58 @@ package ru.stqa.pft.addresbook.model;
 
 public class ContactData {
     private int id = Integer.MAX_VALUE;
-    private final String firstName;
-    private final String lastName;
-    private final String phone;
-    private final String email;
-    private final String group;
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private String address;
+    private String email;
+    private String email2;
+    private String email3;
+    private String group;
+    private String homePhone;
+    private String mobilePhone;
+    private String workPhone;
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public String getAllEmails() {
+        return allPhones;
+    }
+
+    public Object getEmail2() {
+        return email2;
+    }
+
+    public Object getEmail3() {
+        return email3;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+
+    private String allPhones;
+    private String allEmails;
+
+    public String getHomePhone() {
+        return workPhone;
+    }
+
+    public String getMobilePhone() {
+        return workPhone;
+    }
+
+    public String getWorkPhone() {
+        return workPhone;
+    }
 
     public int getId() {
         return id;
@@ -24,6 +71,10 @@ public class ContactData {
         return phone;
     }
 
+    public Object getAddress() {
+        return address;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -37,12 +88,12 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withFirstname(String firstName) {
+    public ContactData withFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
 
-    public ContactData withLastname(String lastName) {
+    public ContactData withLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -59,6 +110,26 @@ public class ContactData {
 
     public ContactData withGroup(String group) {
         this.group = group;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactData withHomePhone(String homePhone) {
+        this.homePhone = homePhone;
+        return this;
+    }
+
+    public ContactData withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+        return this;
+    }
+
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
         return this;
     }
 
@@ -90,4 +161,5 @@ public class ContactData {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
     }
+
 }
