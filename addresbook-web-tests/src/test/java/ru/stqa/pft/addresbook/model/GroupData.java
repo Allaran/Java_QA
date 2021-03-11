@@ -1,10 +1,19 @@
 package ru.stqa.pft.addresbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("group")
 public class GroupData {
 
+    @XStreamOmitField
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String name;
+    @Expose
     private String header;
+    @Expose
     private String footer;
 
     public int getId() {
@@ -33,13 +42,13 @@ public class GroupData {
         return this;
     }
 
-    public GroupData withHeader(String name) {
-        this.name = name;
+    public GroupData withHeader(String header) {
+        this.header = header;
         return this;
     }
 
-    public GroupData withFooter(String name) {
-        this.name = name;
+    public GroupData withFooter(String footer) {
+        this.footer = footer;
         return this;
     }
 
