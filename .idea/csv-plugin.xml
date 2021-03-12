@@ -3,6 +3,20 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\addresbook-web-tests\src\test\java\ru\stqa\pft\addresbook\appmanager\ContactHelper.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\addresbook-web-tests\src\test\java\ru\stqa\pft\addresbook\tests\ContactAddressTests.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\addresbook-web-tests\src\test\java\ru\stqa\pft\addresbook\tests\GroupCreationTests.java">
           <value>
             <Attribute>
@@ -21,6 +35,13 @@
           <value>
             <Attribute>
               <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\addresbook-web-tests\src\test\resources\local.properties">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>

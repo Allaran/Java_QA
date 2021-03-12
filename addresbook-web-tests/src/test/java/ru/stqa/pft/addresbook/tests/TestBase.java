@@ -8,13 +8,16 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addresbook.appmanager.ApplicationManager;
 
+import java.io.IOException;
+
 public class TestBase {
 
-    protected static final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+    protected static final ApplicationManager app
+            = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
     FirefoxDriver wd;
 
     @BeforeSuite(alwaysRun = true)
-    public void setUp() {
+    public void setUp() throws IOException {
         app.init();
     }
 

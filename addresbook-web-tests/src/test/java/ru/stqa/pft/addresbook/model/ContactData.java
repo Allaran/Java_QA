@@ -130,6 +130,16 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withEmail2(String email2) {
+        this.email = email2;
+        return this;
+    }
+
+    public ContactData withEmail3(String email3) {
+        this.email = email3;
+        return this;
+    }
+
     public ContactData withGroup(String group) {
         this.group = group;
         return this;
