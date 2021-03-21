@@ -3,39 +3,75 @@ package ru.stqa.pft.addresbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
+@Entity
+@Table(name = "addressbock")
 @XStreamAlias("contact")
 public class ContactData {
+    @Id
+    @Column(name = "id")
     @XStreamOmitField
     private int id = Integer.MAX_VALUE;
+
     @Expose
+    @Column(name = "firstname")
     private String firstName;
+
     @Expose
+    @Column(name = "lastname")
     private String lastName;
+
+    @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String phone;
     private String address;
+
     @Expose
+    @Column(name = "email")
     private String email;
-    private String email2;
-    private String email3;
+
     @Expose
+    @Column(name = "email")
+    private String email2;
+
+    @Expose
+    @Column(name = "email")
+    private String email3;
+
+    @Transient
     private String group;
+
+    @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String homePhone;
     private String mobilePhone;
+
     @Expose
+    @Column(name = "work")
+    @Type(type = "text")
     private String workPhone;
-    private File photo;
+
+    @Column(name = "photo")
+    @Type(type = "text")
+    private String photo;
+
+    @Transient
     private String allPhones;
+    @Transient
     private String allEmails;
 
     public File getPhoto() {
-        return photo;
+        return new File(photo);
     }
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
@@ -47,11 +83,11 @@ public class ContactData {
         return allPhones;
     }
 
-    public Object getEmail2() {
+    public String getEmail2() {
         return email2;
     }
 
-    public Object getEmail3() {
+    public String getEmail3() {
         return email3;
     }
 
@@ -93,7 +129,7 @@ public class ContactData {
         return phone;
     }
 
-    public Object getAddress() {
+    public String getAddress() {
         return address;
     }
 
