@@ -46,6 +46,10 @@ public class TestBase {
         wd.findElement(By.linkText("add new")).click();
     }
 
+    public void verifyGroupListInUi() {
+
+    }
+
     @AfterSuite(alwaysRun = true)
     public void tearDown() {
         app.stop();
