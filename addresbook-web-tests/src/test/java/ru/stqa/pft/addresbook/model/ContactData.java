@@ -7,6 +7,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbock")
@@ -43,8 +45,11 @@ public class ContactData {
     @Column(name = "email")
     private String email3;
 
-    @Transient
-    private String group;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups",
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>();
 
     @Expose
     @Column(name = "home")
@@ -137,10 +142,6 @@ public class ContactData {
         return email;
     }
 
-    public String getGroup() {
-        return group;
-    }
-
     public ContactData withId(int id) {
         this.id = id;
         return this;
@@ -176,9 +177,8 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withGroup(String group) {
-        this.group = group;
-        return this;
+    public Set<GroupData> getGroups() {
+        return new Groups(groups);
     }
 
     public ContactData withAddress(String address) {
@@ -229,5 +229,4 @@ public class ContactData {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
     }
-
 }

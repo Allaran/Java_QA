@@ -11,10 +11,16 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addresbook.appmanager.ApplicationManager;
+import ru.stqa.pft.addresbook.model.GroupData;
+import ru.stqa.pft.addresbook.model.Groups;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TestBase {
     Logger logger = LoggerFactory.getLogger(GroupCreationTests.class);
@@ -47,7 +53,13 @@ public class TestBase {
     }
 
     public void verifyGroupListInUi() {
-
+        if(Boolean.getBoolean("verifyUI")) {
+            Groups dbGroups = app.db().groups();
+            Groups uiGroups = app.group().all();
+            assertThat(uiGroups, equalTo(dbGroups.stream()
+                    .map((q) -> new GroupData().withId(q.getId()).withName(q.getName()))
+                    .collect(Collectors.toSet())));
+        }
     }
 
     @AfterSuite(alwaysRun = true)
