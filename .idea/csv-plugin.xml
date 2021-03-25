@@ -38,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\addresbook-web-tests\src\test\java\ru\stqa\pft\addresbook\tests\AddContactToGroup.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\addresbook-web-tests\src\test\java\ru\stqa\pft\addresbook\tests\ContactAddressTests.java">
           <value>
             <Attribute>

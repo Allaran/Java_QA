@@ -3,10 +3,9 @@ package ru.stqa.pft.addresbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft.addresbook.model.ContactData;
 import ru.stqa.pft.addresbook.model.Contacts;
+import ru.stqa.pft.addresbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,15 +30,14 @@ public class ContactHelper extends HelperBase {
         type(By.name("phone"), contactData.getPhone());
         type(By.name("email"), contactData.getEmail());
         attach(By.name("phone"), contactData.getPhoto());
-//        if (creation) {
-//            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-//        } else {
-//            Assert.assertFalse(isElementPresent(By.name("new_group")));
-//        }
     }
 
     public void select(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void selectGroup(GroupData group) {
+        wd.findElement(By.xpath(String.format("//select[@name='to_group']/option[@value='%s']", group.getId()))).click();
     }
 
     public void selectById(int id) {
@@ -175,14 +173,22 @@ public class ContactHelper extends HelperBase {
                 .withEmail(email3);
     }
 
-    private void initContactModification(int id) {
+    public void initContactModification(int id) {
         WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
         WebElement row = checkbox.findElement(By.xpath("./../.."));
         List<WebElement> cells = row.findElements(By.tagName("id"));
         cells.get(7).findElement(By.tagName("a")).click();
+    }
 
-//        wd.findElement(By.xpath(String.format("//input[@value='%s']/../..td[8]/a", id))).click();
-//        wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]//td[8]/a", id))).click();
-//        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+    public void initContactCreation() {
+        click(By.linkText("add new"));
+    }
+
+    public void selectContactNotInGroup(ContactData contact) {
+        wd.findElement(By.xpath(String.format("//input[@type='checkbox']", contact.getId()))).click();
+    }
+
+    public void pushAddToGroup() {
+        wd.findElement(By.name("add")).click();
     }
 }

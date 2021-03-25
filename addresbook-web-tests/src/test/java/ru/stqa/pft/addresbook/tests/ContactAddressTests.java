@@ -22,8 +22,7 @@ public class ContactAddressTests extends TestBase {
                     .withFirstName("Kirill")
                     .withLastName("Shuvalov")
                     .withPhone("900")
-                    .withAddress("testAddress")
-                    .withGroup("test1"), true);
+                    .withAddress("testAddress"), true);
             app.goTo().homePage();
         }
     }
