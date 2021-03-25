@@ -40,6 +40,12 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath(String.format("//select[@name='to_group']/option[@value='%s']", group.getId()))).click();
     }
 
+    public void getGroupData(GroupData groupData) {
+        WebElement element = wd.findElement(By.xpath(String.format("//select[@name='group']/option[@text='%s']", groupData.getId())));
+        element.click();
+    }
+
+
     public void selectById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
@@ -190,5 +196,9 @@ public class ContactHelper extends HelperBase {
 
     public void pushAddToGroup() {
         wd.findElement(By.name("add")).click();
+    }
+
+    public void pushRemoveFromGroup() {
+        wd.findElement(By.name("remove")).click();
     }
 }

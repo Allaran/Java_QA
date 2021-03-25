@@ -14,7 +14,7 @@ public class AddContactToGroup extends TestBase {
     public void checkForExistingPreconditions() {
         app.goTo().homePage();
         if(app.db().contacts().size() == 0) {
-            app.contact().create(new ContactData().withFirstName("testName1").withLastName("testLastname1"), true);
+            app.contact().create(new ContactData().withFirstName("Kirill").withLastName("Shuvalov"), true);
             app.goTo().homePage();
         }
 
