@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import ru.stqa.pft.addresbook.model.ContactData;
+import ru.stqa.pft.addresbook.model.Contacts;
 import ru.stqa.pft.addresbook.model.GroupData;
 import ru.stqa.pft.addresbook.model.Groups;
 
@@ -28,5 +30,43 @@ public class DbHelper {
         session.getTransaction().commit();
         session.close();
         return new Groups(result);
+    }
+
+    public Contacts contacts() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> result = session.createQuery("from ContactData").list();
+        session.getTransaction().commit();
+        session.close();
+        return new Contacts(result);
+    }
+
+    public ContactData contactInGroup() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> result = session
+                .createQuery("from ContactData where groups.size > 0 anp deprecated = '0000-00-00'").list();
+        session.getTransaction().commit();
+        session.close();
+        return result.iterator().next();
+    }
+
+    public ContactData contactNotInGroup() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> result = session
+                .createQuery("from ContactData where groups.size = 0 anp deprecated = '0000-00-00'").list();
+        session.getTransaction().commit();
+        session.close();
+        return result.iterator().next();
+    }
+    public ContactData contactById(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> result = session
+                .createQuery(String.format("from ContactData where id = %s ", id)).list();
+        session.getTransaction().commit();
+        session.close();
+        return result.iterator().next();
     }
 }

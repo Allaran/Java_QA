@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\addresbook-web-tests\src\test\java\ru\stqa\pft\addresbook\appmanager\GroupHelper.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\addresbook-web-tests\src\test\java\ru\stqa\pft\addresbook\model\ContactData.java">
           <value>
             <Attribute>
