@@ -23,6 +23,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTest extends TestBase {
 
+    @BeforeMethod
+    public void checkForExistingPreconditions() {
+        if (app.db().groups().size() == 0) {
+            app.goTo().groupPage();
+            app.group().create(new GroupData()
+                    .withName("testGroup1")
+                    .withHeader("testHeader1")
+                    .withFooter("testFooter1"));
+        }
+        app.goTo().homePage();
+    }
+
     @DataProvider
     public Iterator<Object[]> validGroupFromJson() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")))) {
