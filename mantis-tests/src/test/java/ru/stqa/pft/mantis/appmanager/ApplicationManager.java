@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,6 +18,11 @@ public class ApplicationManager {
     private String browser;
     private RegistrationHelper registrationHelper;
     private FtpHelper ftp;
+    private MailHelper mailHelper;
+    private JamesHelper jamesHelper;
+    private DbHelper dbHelper;
+    private AdminHelper adminHelper;
+    private SoapHelper soapHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -26,8 +30,10 @@ public class ApplicationManager {
     }
 
     public void init() throws IOException {
-        String target = System.setProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resouces/%s.properties", target))));
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
+
+        dbHelper = new DbHelper();
     }
 
     public void stop() {
@@ -36,43 +42,72 @@ public class ApplicationManager {
         }
     }
 
-    public HttpSession newSession() {
+    public HttpSession newSession (){
         return new HttpSession(this);
     }
 
-    public String getProperty (String key) {
+    public String getProperty(String key) {
         return properties.getProperty(key);
     }
 
     public RegistrationHelper registration() {
         if (registrationHelper == null) {
-            registrationHelper =  new RegistrationHelper(this);
+            registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
     }
 
-    public FtpHelper ftp() {
+    public FtpHelper ftp () {
         if (ftp == null) {
             ftp = new FtpHelper(this);
         }
         return ftp;
     }
 
-    public WebDriver getDriver() {
-        if (wd == null) {
-            if (browser.equals(BrowserType.FIREFOX)) {
-                System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver-v0.29.0-win64\\geckodriver.exe");
-                wd = new FirefoxDriver();
-            } else if (browser.equals(BrowserType.CHROME)) {
-                System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver_win32\\chromedriver.exe");
+    public WebDriver getDriver(){
+        if (wd == null){
+            if (browser.equals(BrowserType.CHROME)){
                 wd = new ChromeDriver();
+            } else if (browser.equals(BrowserType.FIREFOX)) {
+                wd = new FirefoxDriver();
             } else if (browser.equals(BrowserType.IE)) {
-                System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer_Win32_3.150.1\\chromedriver.exe");
                 wd = new InternetExplorerDriver();
             }
-            wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+            wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             wd.get(properties.getProperty("web.baseUrl"));
         }
-        return wd;
+     return wd;
+    }
+
+   public MailHelper mail (){
+        if (mailHelper == null){
+            mailHelper = new MailHelper(this);
+        }
+        return mailHelper;
+   }
+
+   public JamesHelper james () {
+        if (jamesHelper == null) {
+            jamesHelper = new JamesHelper(this);
+        }
+        return jamesHelper;
+   }
+
+    public DbHelper db() {
+        return dbHelper;
+    }
+
+    public AdminHelper admin() {
+        if (adminHelper == null) {
+            adminHelper = new AdminHelper(this);
+        }
+        return adminHelper;
+    }
+
+    public SoapHelper soap() {
+        if (soapHelper == null) {
+            soapHelper = new SoapHelper(this);
+        }
+        return soapHelper;
     }
 }
