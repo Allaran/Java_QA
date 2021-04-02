@@ -21,7 +21,7 @@ public class MailHelper {
         wiser = new Wiser();
     }
 
-    public List<MailMessage> waitForMail(int count, long timeout) {
+    public List<MailMessage> waitMail(int count, long timeout) {
         long start = System.currentTimeMillis();
         while (System.currentTimeMillis() < start + timeout) {
             if (wiser.getMessages().size() >= count) {
