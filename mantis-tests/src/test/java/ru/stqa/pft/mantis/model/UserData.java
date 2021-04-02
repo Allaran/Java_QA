@@ -25,45 +25,20 @@ public class UserData {
         return id;
     }
 
-    public ru.stqa.pft.mantis.model.UserData withId(int id) {
-        this.id = id;
-        return this;
-    }
-
     public String getUsername() {
         return username;
-    }
-
-    public ru.stqa.pft.mantis.model.UserData withUsername(String username) {
-        this.username = username;
-        return this;
     }
 
     public String getRealname() {
         return realname;
     }
 
-    public ru.stqa.pft.mantis.model.UserData withRealname(String realname) {
-        this.realname = realname;
-        return this;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    public ru.stqa.pft.mantis.model.UserData withEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public ru.stqa.pft.mantis.model.UserData withPassword(String password) {
-        this.password = password;
-        return this;
     }
 
     @Override

@@ -1,11 +1,10 @@
 package ru.stqa.pft.mantis.tests;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-import org.apache.tools.mail.MailMessage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.mantis.appmanager.HttpSession;
+import ru.stqa.pft.mantis.model.MailMessage;
 import ru.stqa.pft.mantis.model.UserData;
 import ru.stqa.pft.mantis.model.Users;
 
