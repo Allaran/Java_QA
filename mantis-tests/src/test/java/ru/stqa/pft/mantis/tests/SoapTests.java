@@ -32,8 +32,8 @@ public class SoapTests extends TestBase {
         assertEquals(issue.getSummary(), created.getSummary());
     }
 
-//    @Test
-//    public void testSkipIsNotFixed() throws RemoteException, ServiceException, MalformedURLException {
-//        skipIfNotFixed(1);
-//    }
+    @Test
+    public void testSkipIsNotFixed() throws RemoteException, ServiceException, MalformedURLException {
+        skipIfNotFixed(1);
+    }
 }
