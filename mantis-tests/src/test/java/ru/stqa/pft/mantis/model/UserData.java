@@ -25,27 +25,52 @@ public class UserData {
         return id;
     }
 
+    public UserData withId(int id) {
+        this.id = id;
+        return this;
+    }
+
     public String getUsername() {
         return username;
+    }
+
+    public UserData withUsername(String username) {
+        this.username = username;
+        return this;
     }
 
     public String getRealname() {
         return realname;
     }
 
+    public UserData withRealname(String realname) {
+        this.realname = realname;
+        return this;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public UserData withEmail(String email) {
+        this.email = email;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public UserData withPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ru.stqa.pft.mantis.model.UserData userData = (ru.stqa.pft.mantis.model.UserData) o;
+        UserData userData = (UserData) o;
         return id == userData.id && Objects.equals(username, userData.username) && Objects.equals(email, userData.email);
     }
 

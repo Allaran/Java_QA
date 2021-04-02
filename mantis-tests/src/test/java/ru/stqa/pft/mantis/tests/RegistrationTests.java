@@ -1,17 +1,16 @@
 package ru.stqa.pft.mantis.tests;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-import org.apache.tools.mail.MailMessage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.stqa.pft.mantis.model.MailMessage;
 
 import java.io.IOException;
 import java.util.List;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-public class RegistrationTests extends TestBase{
+public class RegistrationTests extends TestBase {
 
     @BeforeMethod
     public void startMailServer() {
@@ -33,7 +32,7 @@ public class RegistrationTests extends TestBase{
     }
 
     @AfterMethod
-    public void stopMailServer() throws MessagingException {
+    public void stopMailServer() {
         app.mail().stop();
     }
 }
