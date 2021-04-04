@@ -19,7 +19,7 @@ public class ContactDeletionTest extends TestBase {
                 app.goTo().groupPage();
                 app.group().create(new GroupData().withName("testGroup1"));
             }
-            app.contact().initContactCreation();
+            app.goTo().addNewPage();
             app.contact().create(new ContactData()
                     .withFirstName("Kirill")
                     .withLastName("Shuvalov"), true);
