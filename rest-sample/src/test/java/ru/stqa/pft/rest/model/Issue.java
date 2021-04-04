@@ -1,10 +1,15 @@
-package ru.stqa.pft.rest;
+package ru.stqa.pft.rest.model;
 
 public class Issue {
 
     private int id;
     private String subject;
     private String description;
+    private String bugStatus;
+
+    public String getBugStatus() {
+        return bugStatus;
+    }
 
     public int getId() {
         return id;
@@ -42,7 +47,8 @@ public class Issue {
 
         if (id != issue.id) return false;
         if (subject != null ? !subject.equals(issue.subject) : issue.subject != null) return false;
-        return description != null ? description.equals(issue.description) : issue.description == null;
+        if (description != null ? !description.equals(issue.description) : issue.description != null) return false;
+        return bugStatus != null ? bugStatus.equals(issue.bugStatus) : issue.bugStatus == null;
     }
 
     @Override
@@ -50,6 +56,7 @@ public class Issue {
         int result = id;
         result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (bugStatus != null ? bugStatus.hashCode() : 0);
         return result;
     }
 }
