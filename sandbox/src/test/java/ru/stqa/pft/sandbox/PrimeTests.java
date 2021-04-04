@@ -18,6 +18,6 @@ public class PrimeTests {
 
     @Test
     public void testNonPrimes() {
-        Assert.assertFalse(Primes.isPrime(Integer.MAX_VALUE - 2));
+        Assert.assertFalse(Primes.isPrime(Integer.MAX_VALUE - 1));
     }
 }
