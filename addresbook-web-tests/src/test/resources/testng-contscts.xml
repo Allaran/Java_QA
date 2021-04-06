@@ -3,9 +3,9 @@
 <suite name = "Suite1" verbose="1">
     <test name="Contacts">
         <classes>
-            <class name="ru.stqa.pft.addresbook.tests.ContactCreationTest"/>
-            <class name="ru.stqa.pft.addresbook.tests.ContactModificationTest"/>
-            <class name="ru.stqa.pft.addresbook.tests.ContactDeletionTest"/>
+            <class name="ru.stqa.pft.addresbook.tests.ContactCreationTests"/>
+            <class name="ru.stqa.pft.addresbook.tests.ContactModificationTests"/>
+            <class name="ru.stqa.pft.addresbook.tests.ContactDeletionTests"/>
             <class name="ru.stqa.pft.addresbook.tests.ContactPhoneTests"/>
             <class name="ru.stqa.pft.addresbook.tests.ContactEmailTests"/>
             <class name="ru.stqa.pft.addresbook.tests.ContactAddressTests"/>

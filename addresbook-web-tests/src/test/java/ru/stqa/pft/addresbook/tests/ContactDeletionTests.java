@@ -10,7 +10,7 @@ import ru.stqa.pft.addresbook.model.GroupData;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactDeletionTest extends TestBase {
+public class ContactDeletionTests extends TestBase {
 
     @BeforeMethod
     public void checkForExistingPreconditions() {
