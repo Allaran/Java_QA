@@ -18,8 +18,8 @@ public class RestTests extends TestBase {
         Set<Issue> oldIssues = IssueHelper.getIssues();
         Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
         int issueId = IssueHelper.createIssue(newIssue);
-        Set<Issue> newIssue = IssueHelper.getIssues();
+        Set<Issue> newIssues = IssueHelper.getIssues();
         oldIssues.add(newIssue.withId(issueId));
-        assertEquals(newIssue, oldIssues);
+        assertEquals(newIssues, oldIssues);
     }
 }

@@ -22,7 +22,8 @@ public class AddContactToGroup extends TestBase {
         if (contacts.size() == 0) {
 
             app.goTo().addNewPage();
-            app.contact().create(new ContactData().withFirstName("Kirill")
+            app.contact().create(new ContactData()
+                    .withFirstName("Kirill")
                     .withLastName("Shuvalov"), true);
             app.goTo().homePage();
         }

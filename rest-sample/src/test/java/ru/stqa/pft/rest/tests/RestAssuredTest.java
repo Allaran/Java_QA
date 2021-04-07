@@ -25,10 +25,10 @@ public class RestAssuredTest extends TestBase {
     @Test
     public void testCreateIssue() {
         Set<Issue> oldIssues = getIssues();
-        Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
-        int issueId = createIssue(newIssue);
+        Issue newIssues = new Issue().withSubject("Test issue").withDescription("New test issue");
+        int issueId = createIssue(newIssues);
         Set<Issue> newIssue = getIssues();
-        oldIssues.add(newIssue.withId(issueId));
+        oldIssues.add(newIssues.withId(issueId));
         assertEquals(newIssue, oldIssues);
     }
 
