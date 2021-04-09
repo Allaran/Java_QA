@@ -21,8 +21,7 @@ public class IssueHelper {
                                    .asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");
-        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
-        }.getType());
+        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {}.getType());
     }
 
     public static Executor getExecutor() {

@@ -20,7 +20,6 @@ public class AddContactToGroup extends TestBase {
             app.group().create(new GroupData().withName("test"));
         }
         if (contacts.size() == 0) {
-
             app.goTo().addNewPage();
             app.contact().create(new ContactData()
                     .withFirstName("Kirill")
