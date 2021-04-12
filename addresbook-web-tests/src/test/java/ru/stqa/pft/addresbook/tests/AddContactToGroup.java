@@ -7,6 +7,9 @@ import ru.stqa.pft.addresbook.model.Contacts;
 import ru.stqa.pft.addresbook.model.GroupData;
 import ru.stqa.pft.addresbook.model.Groups;
 
+import java.util.Optional;
+
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class AddContactToGroup extends TestBase {
@@ -26,18 +29,30 @@ public class AddContactToGroup extends TestBase {
                     .withLastName("Shuvalov"), true);
             app.goTo().homePage();
         }
+        app.goTo().homePage();
     }
 
     @Test
     public void testAddContactToGroup() {
-        app.goTo().homePage();
-        ContactData contactData = app.db().contactNotInGroup();
-        app.contact().selectContactNotInGroup(contactData);
-        Groups groups = app.db().groups();
-        GroupData group = groups.iterator().next();
-        app.contact().selectGroup(group);
-        app.contact().pushAddToGroup();
-        ContactData contactData1 = app.db().contactById(contactData.getId());
-        assertTrue(contactData1.getGroups().contains(group));
+        Groups allGroups = app.db().groups();
+        Contacts allContacts = app.db().contacts();
+        ContactData contactNotInGroups = app.contact().contactNotInGroups(allGroups, allContacts);
+        GroupData emptyGroups = app.group().emptyGroups(allGroups, contactNotInGroups);
+
+        if (emptyGroups == null) {
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName("test1"));
+            emptyGroups = app.db().groups().stream().skip(allGroups.size()).findFirst().get();
+        }
+
+        app.contact().addToGroup(contactNotInGroups, emptyGroups);
+        Contacts contacts = app.db().contacts();
+        assertEquals(allContacts.size(), contacts.size());
+        int id = contactNotInGroups.getId();
+        Optional<ContactData> alteredContact = contacts
+                .stream()
+                .filter((q) -> q.getId() == id)
+                .findFirst();
+        assertTrue(alteredContact.get().getGroups().contains(contactNotInGroups));
     }
 }

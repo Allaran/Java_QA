@@ -3,9 +3,11 @@ package ru.stqa.pft.addresbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addresbook.model.ContactData;
 import ru.stqa.pft.addresbook.model.Contacts;
 import ru.stqa.pft.addresbook.model.GroupData;
+import ru.stqa.pft.addresbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -200,5 +202,23 @@ public class ContactHelper extends HelperBase {
 
     public void pushRemoveFromGroup() {
         wd.findElement(By.name("remove")).click();
+    }
+
+    public ContactData contactNotInGroups(Groups groups, Contacts contacts) {
+        ContactData contactNotInGroups = null;
+        for (ContactData contact : contacts) {
+            contactNotInGroups = contact;
+            if (contact.getGroups().size() != groups.size()) {
+                break;
+            }
+        }
+        return contactNotInGroups;
+    }
+
+    public void addToGroup(ContactData contact, GroupData group) {
+        selectById(contact.getId());
+        wd.findElement(By.name("to_group")).click();
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
+        wd.findElement(By.name("add")).click();
     }
 }

@@ -15,18 +15,26 @@ public class DeleteContactFromGroup extends TestBase {
     public void checkForExistingPreconditions() {
         Contacts contacts = app.db().contacts();
         Groups groups = app.db().groups();
-        app.goTo().homePage();
         if (contacts.size() == 0) {
             app.contact().create(new ContactData()
                     .withFirstName("Kirill")
                     .withLastName("Shuvalov"), true);
-            app.goTo().homePage();
         }
 
         if (groups.size() == 0) {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("testGroup2"));
         }
+
+        if (!contacts.contains(groups)) {
+            app.goTo().homePage();
+            ContactData contactData = app.db().contactInGroup();
+            app.contact().selectContactNotInGroup(contactData);
+            GroupData group = groups.iterator().next();
+            app.contact().selectGroup(group);
+            app.contact().pushAddToGroup();
+        }
+        app.goTo().homePage();
     }
 
     @Test
